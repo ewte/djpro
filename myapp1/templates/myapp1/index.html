@@ -1,0 +1,194 @@
+{% extends 'myapp1/base.html' %}
+{% load static %}
+
+{% block title %}Main{% endblock %}
+
+{% block body %}
+<body>
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		{% block header %}
+		{% include 'myapp1/header.html'%}
+		{% endblock %}
+
+
+		{% block content %}
+
+			<!-- All post list -->
+			<div id="main">
+
+				{% for el in  arts %}
+				
+					<!-- Post -->
+					<article class="post">
+						<header>
+							<div class="title">
+
+								<!-- Title -->
+								<h2><a href="#">{{ el.post_title }}</a></h2>
+
+								<!-- Category -->
+								<p>{{ el.post_category }}</p>
+							</div>
+							<div class="meta">
+
+								<!-- Date -->
+								<time class="published" datetime="2015-11-01">{{ el.post_date | date:"F j, Y" }}</time>
+
+								<!-- Autor name -->
+								<a href="#" class="author"><span class="name">{{ el.post_autor }}</span><img
+										src="{% static 'myapp1/images/avatar.jpg' %}" alt="" /></a>
+							</div>
+						</header>
+
+						<!-- Post image -->
+						<a href="#" class="image featured"><img src="{% static 'myapp1/images/pic01.jpg' %}" alt="" /></a>
+
+						<!-- Post text -->
+						<p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod
+							placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue
+							ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae,
+							ultricies congue gravida diam non fringilla.</p>
+						<footer>
+							<ul class="actions">
+
+								<!-- Button -->
+								<li><a href="{% url 'post' el.id %}" class="button big">Continue Reading</a></li>
+							</ul>
+
+							<!-- Bar like -->
+							<ul class="stats">
+								<li><a href="#">General</a></li>
+								<li><a href="#"><i class="fa-solid fa-eye" style="color: #86a8e4;"></i></a>{{ el.post_viev }}</a></li>
+								<li><a href="#"><i class="fa-solid fa-heart" style="color: #86a8e4;"></i>{{ el.post_like }}</a></li>
+								<li><a href="#"><i class="fa-solid fa-comment" style="color: #86a8e4;"></i>{{ el.post_comment }}</a></li>
+								<li><a href="#"><i class="fa-solid fa-bookmark" style="color: #82b0ff;"></i>{{ el.post_viev }}</a></li>
+
+							</ul> 
+						</footer>
+					</article>
+
+				{% endfor %}
+
+				<!-- Pagination -->
+				<ul class="actions pagination">
+					<li><a href="" class="disabled button big previous">Previous Page</a></li>
+					<li><a href="#" class="button big next">Next Page</a></li>
+				</ul>
+
+			</div>
+
+			<!-- Sidebar -->
+			<section id="sidebar">
+
+				<!-- Intro -->
+				<section id="intro">
+					<a href="#" class="logo"><img src="{% static 'myapp1/images/logo.jpg' %}" alt="" /></a>
+					<header>
+						<h2>Bishbarmak</h2>
+						<p>Another fine responsive site template by <a href="http://html5up.net">HTML5 UP</a></p>
+					</header>
+				</section>
+
+
+
+
+				<!-- Featured 5 -->
+				<section>
+					<div class="bar-name">
+						<h1 class="bar-name">Популярное</h1>
+					</div>
+					<div class="mini-posts">
+
+						{% for pop in popular %}
+
+							<!-- Mini Post -->
+							<article class="mini-post">
+								<header>
+
+									<!-- title -->
+									<h3><a href="#">Vitae sed condimentum</a></h3>
+
+									<!-- date -->
+									<time class="published" datetime="2015-10-20">October 20, 2015</time>
+
+									<!-- autor image -->
+									<a href="#" class="author"><img src="{% static 'myapp1/images/avatar.jpg' %}" alt="" /></a>
+								</header>
+
+								<!-- post image -->
+								<a href="#" class="image"><img src="{% static 'myapp1/images/pic04.jpg' %}" alt="" /></a>
+							</article>
+						{% endfor %}
+
+					</div>
+				</section>
+
+
+				<!-- Most readble 5 -->
+				<section>
+
+					<div class="bar-name">
+						<h1 class="bar-name">Не заню пока</h1>
+					</div>
+
+					<ul class="posts">
+
+
+						<li>
+							<article>
+								<header>
+									<h3><a href="#">Lorem ipsum fermentum ut nisl vitae</a></h3>
+									<time class="published" datetime="2015-10-20">October 20, 2015</time>
+								</header>
+								<a href="#" class="image"><img src="{% static 'myapp1/images/pic08.jpg' %}" alt="" /></a>
+							</article>
+						</li>
+
+
+					</ul>
+				</section>
+
+
+				
+				<!-- About -->
+				<section class="blurb">
+					<h2>About</h2>
+					<p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod amet
+						placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at phasellus sed ultricies.</p>
+					<ul class="actions">
+						<li><a href="{% url 'about' %}" class="button">Learn More</a></li>
+					</ul>
+				</section>
+
+				<!-- Footer -->
+				<section id="footer">
+					<ul class="icons">
+						<li><a href="#" class="fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="#" class="fa-rss"><span class="label">RSS</span></a></li>
+						<li><a href="#" class="fa-envelope"><span class="label">Email</span></a></li>
+					</ul>
+					<p class="copyright">&copy; Untitled. Design: <a href="http://html5up.net">HTML5 UP</a>. Images: <a
+							href="http://unsplash.com">Unsplash</a>.</p>
+				</section>
+
+			</section>
+
+		{% endblock %}
+
+	</div>
+	
+	<!-- Scripts -->
+	<script src="{% static 'myapp1/js/jquery.min.js' %}"></script>
+	<script src="{% static 'myapp1/js/skel.min.js' %}"></script>
+	<script src="{% static 'myapp1/js/util.js' %}"></script>
+	<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+	<script src="{% static 'myapp1/js/main.js' %}"></script>
+
+
+</body>
+{% endblock %}
