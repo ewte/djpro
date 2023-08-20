@@ -1,1 +1,1 @@
-print(my nam)
+frrrrl0
